@@ -2,18 +2,23 @@
   <div>
     <b-form @submit="onLogin" v-if="Show">
       <b-form-group
+        id="login"
         label="User login:"
         description="Could you please input your login"
       >
-        <b-from-input 
-        placeholder="Enter your login" 
-        required> </b-from-input>
-        <b-from-input
+        <b-form-input
+          placeholder="Enter your login"
+          required
+          v-model="UserLogin"
+        >
+        </b-form-input>
+        <b-form-input
           placeholder="Enter your password"
           type="password"
           required
+          v-model="UserPassword"
         >
-        </b-from-input>
+        </b-form-input>
       </b-form-group>
       <b-button type="submit" variant="primary">Submit</b-button>
     </b-form>
@@ -21,21 +26,21 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from "vue-property-decorator";
+import { Component, Vue } from "vue-property-decorator";
+import { IUser } from "../../core/model/User";
+import { AppModule } from "../store/modules/app";
 
 @Component({
   name: "Registraion",
-  // components:{
-  //     some my components that imported
-  // }
 })
 export default class Registration extends Vue {
-  @Prop() public UserLogin: string = "";
-  @Prop() public UserPassword: string = "";
-  @Prop() public Show: boolean = true;
+  public UserLogin = "";
+  public UserPassword = "";
+  public Show = true;
 
-  public onLogin() {
-    console.log("onLogin");
+  public async onLogin():Promise<void> {
+    const user = {name:this.UserLogin,password:this.UserPassword} as IUser;
+    await AppModule.LogIn(user);
   }
 }
 </script>
