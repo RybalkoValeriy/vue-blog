@@ -1,5 +1,3 @@
-export { User, users };
-
 class User {
   constructor(name, password) {
     this.name = name;
@@ -8,3 +6,5 @@ class User {
 }
 
 const users = [new User("Alex", "passw0rd"), new User("Bob", "passw0rd")];
+
+export default { User, users };

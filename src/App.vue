@@ -20,7 +20,7 @@
           <router-link to="/About" class="nav-item nav-link">About</router-link>
           <router-link to="/Careers" class="nav-link">Careers</router-link>
           <router-link to="/Contact" class="nav-link">Contact</router-link>
-          <router-link to="/Registration" class="nav-link">Registration</router-link>
+          <router-link to="/Login" class="nav-link">Login</router-link>
         </div>
         <form class="d-flex">
           <input
