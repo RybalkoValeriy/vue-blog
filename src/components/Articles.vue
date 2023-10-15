@@ -10,8 +10,8 @@
 import { Component, Vue, Prop } from "vue-property-decorator";
 
 @Component
-export default class Blog extends Vue {
-  @Prop() public articles: string[] = [];
+export default class Articles extends Vue {
+  public articles: string[] = [];
 }
 </script>
 

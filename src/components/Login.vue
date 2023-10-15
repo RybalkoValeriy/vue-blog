@@ -34,10 +34,11 @@
 </template>
 
 <script lang="ts">
-import { AxiosError } from "axios";
+import axios from "axios";
+import { User } from "../../core/models/User";
 import { Component, Vue } from "vue-property-decorator";
-import { IUser } from "../../core/model/User";
 import { AppModule } from "../store/modules/app";
+import { BaseApiError } from "../../core/errors/BaseApiError";
 
 @Component({
   name: "Login",
@@ -52,18 +53,23 @@ export default class Login extends Vue {
       const user = {
         name: this.UserLogin,
         password: this.UserPassword,
-      } as IUser;
+      } as User;
+
       await AppModule.LogIn(user);
     } catch (error: Error | any) {
       this.reset();
-
-      // todo: continue exception handling
-      this.$bvToast.toast(`${AxiosError}.`, {
-        title: "Error",
-        appendToast: true,
-        autoHideDelay: 4000,
-        variant: "danger",
-      });
+      // todo: add check status code
+      if (
+        axios.isAxiosError<BaseApiError, Record<string, unknown>>(error) &&
+        error.status !== 200
+      ) {
+        this.$bvToast.toast(`${error.response?.data.message}.`, {
+          title: "Error",
+          appendToast: true,
+          autoHideDelay: 4000,
+          variant: "danger",
+        });
+      }
     }
   }
 

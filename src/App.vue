@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <nav class="container navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Logo Here</a>
+      <a class="navbar-brand" href=""
+        ><img ref="./../public/blog.png" /><img
+      /></a>
       <button
         class="navbar-toggler"
         type="button"
@@ -16,26 +18,45 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <div class="navbar-nav mr-auto">
-          <router-link to="/" class="nav-item nav-link">Home</router-link>
-          <router-link to="/About" class="nav-item nav-link">About</router-link>
-          <router-link to="/Careers" class="nav-link">Careers</router-link>
-          <router-link to="/Contact" class="nav-link">Contact</router-link>
-          <router-link to="/Login" class="nav-link">Login</router-link>
+          <router-link to="/" class="nav-item nav-link">Topics</router-link>
+          <router-link to="/Articles" class="nav-item nav-link"
+            >Articles</router-link
+          >
+          <span v-if="isLoggedIn()">
+            <router-link to="/Profile" class="nav-link"
+              >Profile:{{ currentUser?.name }}</router-link
+            >
+          </span>
+          <span>
+            <router-link to="/Login" class="nav-link">Login</router-link>
+          </span>
         </div>
-        <form class="d-flex">
-          <input
-            class="form-control me-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
       </div>
     </nav>
     <router-view />
   </div>
 </template>
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
+import { AppModule } from "./store/modules/app";
+import { User } from "core/models/User";
+
+@Component({
+  name: "App",
+})
+export default class App extends Vue {
+  public currentUser: User | null = null;
+
+  public async created() {
+    this.currentUser = AppModule.user;
+    await Promise.all([AppModule.InitAppState()]);
+  }
+
+  public isLoggedIn(): boolean {
+    return this.currentUser !== null;
+  }
+}
+</script>
 
 <style lang="scss">
 #app {

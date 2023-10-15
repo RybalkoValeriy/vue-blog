@@ -3,5 +3,7 @@ db-structure: https://mysql.tutorials24x7.com/blog/guide-to-design-a-database-fo
 
 todo:
  - [x] get project example + import vue 2 doc from work OneNoe acc
- - [ ] init mock server to get data
- - [ ] try to update navbar to use bootstrap-vue components
+ - [x] init mock server to get data
+ - [ ] resolve issue with load topics
+ - [ ] articles entity load from signed-in user
+ - [ ] continue add the loadingAllTopics on load app.
