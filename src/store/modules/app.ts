@@ -23,6 +23,7 @@ class App extends VuexModule implements IAppState {
   public user: User | null = null;
   public isSignedIn: boolean | false = false;
   public allTopics: Topic[] = [];
+  private allTopicsPromise: Promise<void> | null = null;
 
   @Mutation
   private SET_USER(user: User): void {
@@ -30,8 +31,13 @@ class App extends VuexModule implements IAppState {
   }
 
   @Mutation
-  SET_TOPICS(topics: Topic[]): void {
+  private SET_TOPICS(topics: Topic[]): void {
     this.allTopics = topics;
+  }
+
+  @Mutation
+  private SET_TOPICS_PROMISE(promise: Promise<void> | null): void {
+    this.allTopicsPromise = promise;
   }
 
   @Action({ rawError: true })
@@ -48,27 +54,24 @@ class App extends VuexModule implements IAppState {
   }
 
   @Action({ rawError: true })
-  public async InitAppState(): Promise<void> {
-    const topicPromise = this.loadTopics();
-
-    await Promise.all([topicPromise]);
+  public async loadCommon(): Promise<void> {
+    await this.loadTopics();
   }
 
   @Action({ rawError: true })
   public async loadTopics(): Promise<void> {
+    if (this.allTopics.length > 0) {
+      return;
+    }
     const promise = new Promise<void>(async (resolve, reject) => {
       const topics = await Repository.GetAllTopics();
+
       this.SET_TOPICS(topics);
 
       resolve();
     });
 
     await promise;
-  }
-
-  public async GetT(): Promise<Topic[]> {
-    const t = await Repository.GetAllTopics();
-    return t;
   }
 }
 

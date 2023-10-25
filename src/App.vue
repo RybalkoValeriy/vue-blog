@@ -47,9 +47,13 @@ import { User } from "core/models/User";
 export default class App extends Vue {
   public currentUser: User | null = null;
 
+  // part of vue vue lifecycle on load page
   public async created() {
     this.currentUser = AppModule.user;
-    await Promise.all([AppModule.InitAppState()]);
+
+ 
+      await AppModule.loadCommon()
+
   }
 
   public isLoggedIn(): boolean {
