@@ -12,6 +12,7 @@ import { UserService } from "../../../core/services/UserService";
 import { Repository } from "../../../core/services/Repository";
 
 import store from "@/store";
+import { Article } from "core/models/Article";
 
 export interface IAppState {
   user: User | null;
@@ -39,6 +40,11 @@ class App extends VuexModule implements IAppState {
   private SET_TOPICS_PROMISE(promise: Promise<void> | null): void {
     this.allTopicsPromise = promise;
   }
+
+  // @Mutation
+  // private SET_ARTICLE_FOR_TOPIC(articles: Article[]): void {
+  //   this.articles = articles;
+  // }
 
   @Action({ rawError: true })
   public async LogIn(user: User): Promise<boolean> {
@@ -72,6 +78,11 @@ class App extends VuexModule implements IAppState {
     });
 
     await promise;
+  }
+
+  @Action({ rawError: true })
+  public async getArticlesForTenant(topicId: string): Promise<Article[]> {
+    return Repository.GetArticleByTopicId(topicId);
   }
 }
 

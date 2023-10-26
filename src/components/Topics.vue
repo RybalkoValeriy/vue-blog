@@ -4,7 +4,10 @@
     <div>
       <ul>
         <li v-for="(topic, index) in topics" :key="index">
-          {{ topic.Name }}
+          <router-link 
+            :to="'/topic/'+topic.Id+'/articles'">
+            {{ topic.Name }}
+          </router-link>
         </li>
       </ul>
     </div>

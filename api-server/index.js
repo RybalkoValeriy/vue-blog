@@ -9,12 +9,12 @@ const app = express();
 app.use(bodyParser.json());
 
 // ARTICLES
-app.get("/api/articles", async (req, res) => {
+app.get("/api/articles/", async (req, res) => {
   await utilities.mockDelay(200);
   res.status(200).send(articleModule.Article);
 });
 
-app.get("/api/articles/:topicId", async (req, res) => {
+app.get("/api/articles/:topicId/", async (req, res) => {
   await utilities.mockDelay(200);
   res
     .status(200)

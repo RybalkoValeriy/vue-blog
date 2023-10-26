@@ -5,7 +5,8 @@ todo:
  - [x] get project example + import vue 2 doc from work OneNoe acc
  - [x] init mock server to get data
  - [x] resolve issue with load topics * app
- - [ ] create link to open by topic - articles
+ - [x] create link to open by topic - articles
+ - [ ] show Articles by singed UserId, show user in panel as logIn User
  - [ ] use ArticleDetails to show one opened article
  - [ ] articles entity load from signed-in user
  - [x] continue add the loadingAllTopics on load app.
@@ -20,5 +21,6 @@ todo:
             on async created invoke AppModule.loadCommon
         - targetEntity.vue
             use getter to get targetEntity from AppModule.targetEntity
+    - nested routes:
 
 

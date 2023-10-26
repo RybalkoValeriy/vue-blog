@@ -10,7 +10,7 @@ export class Repository {
   }
 
   public static async GetArticleByTopicId(topicId: string): Promise<Article[]> {
-    const url = `api/articles?topicId=${topicId}`;
+    const url = `/api/articles/${topicId}`;
     const response = await axios.get<Article[]>(url);
     return response.data;
   }
