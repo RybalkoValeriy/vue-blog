@@ -55,16 +55,13 @@ class App extends VuexModule implements IAppState {
   public async LogIn(user: User): Promise<void> {
     const userExists = await UserService.loginUser(user);
 
-    console.log(userExists.id);
-    console.log(userExists.name);
-
     if (userExists) {
-      console.log(`action login:${userExists.name}`);
       AppModule.SET_USER(userExists);
       AppModule.SET_IS_SIGNED_IN(true);
     }
   }
 
+  @Action({ rawError: true })
   public LogOut() {
     AppModule.SET_USER(null);
     AppModule.SET_IS_SIGNED_IN(false);

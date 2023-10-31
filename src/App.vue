@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <nav class="container navbar navbar-expand-lg navbar-light bg-light">
+    <Nav class="container navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href=""
         ><img ref="./../public/blog.png" /><img
       /></a>
-      <button
+      <BButton
         class="navbar-toggler"
         type="button"
         data-toggle="collapse"
@@ -14,29 +14,29 @@
         aria-label="Toggle navigation"
       >
         <span class="navbar-toggler-icon"></span>
-      </button>
+      </BButton>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <div class="navbar-nav mr-auto">
-          <router-link to="/" class="nav-item nav-link">Topics</router-link>
-          <router-link to="/Articles" class="nav-item nav-link"
-            >Articles</router-link
+          <RouterLink to="/" class="nav-item nav-link">Topics</RouterLink>
+          <RouterLink to="/Articles" class="nav-item nav-link"
+            >Articles</RouterLink
           >
-          <router-link
+          <RouterLink
             v-if="isLoggedIn()"
             to="/Profile"
             class="nav-item nav-link"
-            >{{ getCurrentUser()?.name }}</router-link
+            >{{ getCurrentUser()?.name }}</RouterLink
           >
-          <span v-if="isLoggedIn() === false">
-            <router-link to="/Login" class="nav-link">Login</router-link>
+          <span v-if="isLoggedIn() == false">
+            <RouterLink to="/Login" class="nav-link">Login</RouterLink>
           </span>
           <span v-if="isLoggedIn()">
-            <router-link to="/Logout" class="nav-link">LogOut</router-link>
+            <BButton @click="OnLogOut()">LogOut </BButton>
           </span>
         </div>
       </div>
-    </nav>
+    </Nav>
     <router-view />
   </div>
 </template>
@@ -59,6 +59,10 @@ export default class App extends Vue {
 
   public getCurrentUser(): User | null {
     return AppModule.user;
+  }
+
+  public OnLogOut(): void {
+    AppModule.LogOut();
   }
 }
 </script>

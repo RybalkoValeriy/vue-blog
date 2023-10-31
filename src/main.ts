@@ -11,6 +11,7 @@ import {
   TablePlugin,
   FormInputPlugin,
   ToastPlugin,
+  ListGroupPlugin,
 } from "bootstrap-vue";
 
 import "bootstrap/dist/css/bootstrap.css";
@@ -26,6 +27,7 @@ Vue.use(ModalPlugin);
 Vue.use(TablePlugin);
 Vue.use(FormInputPlugin);
 Vue.use(ToastPlugin);
+Vue.use(ListGroupPlugin);
 
 new Vue({
   router,

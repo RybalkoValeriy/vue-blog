@@ -2,14 +2,11 @@
   <div>
     <h2>Topics:</h2>
     <div>
-      <ul>
-        <li v-for="(topic, index) in topics" :key="index">
-          <router-link 
-            :to="'/topic/'+topic.Id+'/articles'">
-            {{ topic.Name }}
-          </router-link>
-        </li>
-      </ul>
+      <BListGroup v-for="(topic, index) in topics" :key="index">
+        <BListGroupItem :to="'/topic/' + topic.Id + '/articles'">
+          {{ topic.Name }}
+        </BListGroupItem>
+      </BListGroup>
     </div>
   </div>
 </template>
@@ -22,7 +19,6 @@ import { Component, Vue } from "vue-property-decorator";
   name: "Topics",
 })
 export default class Topics extends Vue {
-  
   public get topics() {
     return AppModule.allTopics;
   }
