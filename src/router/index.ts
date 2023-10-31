@@ -14,6 +14,11 @@ const routes: Array<RouteConfig> = [
     component: Topics,
   },
   {
+    path: "/topic/:topicId/articles",
+    name: "topic/articles",
+    component: Articles,
+  },
+  {
     path: "/articles",
     name: "articles",
     component: Articles,
