@@ -27,8 +27,13 @@ class App extends VuexModule implements IAppState {
   private allTopicsPromise: Promise<void> | null = null;
 
   @Mutation
-  private SET_USER(user: User): void {
+  private SET_USER(user: User | null): void {
     this.user = user;
+  }
+
+  @Mutation
+  private SET_IS_SIGNED_IN(isSignedIn: boolean): void {
+    this.isSignedIn = isSignedIn;
   }
 
   @Mutation
@@ -47,16 +52,22 @@ class App extends VuexModule implements IAppState {
   // }
 
   @Action({ rawError: true })
-  public async LogIn(user: User): Promise<boolean> {
+  public async LogIn(user: User): Promise<void> {
     const userExists = await UserService.loginUser(user);
 
-    if (userExists) {
-      AppModule.SET_USER(userExists);
-      this.isSignedIn = true;
-      return true;
-    }
+    console.log(userExists.id);
+    console.log(userExists.name);
 
-    return false;
+    if (userExists) {
+      console.log(`action login:${userExists.name}`);
+      AppModule.SET_USER(userExists);
+      AppModule.SET_IS_SIGNED_IN(true);
+    }
+  }
+
+  public LogOut() {
+    AppModule.SET_USER(null);
+    AppModule.SET_IS_SIGNED_IN(false);
   }
 
   @Action({ rawError: true })

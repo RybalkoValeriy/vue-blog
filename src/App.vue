@@ -22,13 +22,17 @@
           <router-link to="/Articles" class="nav-item nav-link"
             >Articles</router-link
           >
-          <span v-if="isLoggedIn()">
-            <router-link to="/Profile" class="nav-link"
-              >Profile:{{ currentUser?.name }}</router-link
-            >
-          </span>
-          <span>
+          <router-link
+            v-if="isLoggedIn()"
+            to="/Profile"
+            class="nav-item nav-link"
+            >{{ getCurrentUser()?.name }}</router-link
+          >
+          <span v-if="isLoggedIn() === false">
             <router-link to="/Login" class="nav-link">Login</router-link>
+          </span>
+          <span v-if="isLoggedIn()">
+            <router-link to="/Logout" class="nav-link">LogOut</router-link>
           </span>
         </div>
       </div>
@@ -45,19 +49,16 @@ import { User } from "core/models/User";
   name: "App",
 })
 export default class App extends Vue {
-  public currentUser: User | null = null;
-
-  // part of vue vue lifecycle on load page
   public async created() {
-    this.currentUser = AppModule.user;
-
- 
-      await AppModule.loadCommon()
-
+    await AppModule.loadCommon();
   }
 
   public isLoggedIn(): boolean {
-    return this.currentUser !== null;
+    return AppModule.isSignedIn;
+  }
+
+  public getCurrentUser(): User | null {
+    return AppModule.user;
   }
 }
 </script>

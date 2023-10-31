@@ -56,6 +56,7 @@ export default class Login extends Vue {
       } as User;
 
       await AppModule.LogIn(user);
+      // todo: add redirect to another page
     } catch (error: Error | any) {
       this.reset();
       // todo: add check status code

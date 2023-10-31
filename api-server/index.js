@@ -51,22 +51,19 @@ app.get("/api/topics", async (req, res) => {
 // LOGIN
 app.post("/api/login", async (req, res) => {
   await utilities.mockDelay(400);
-
   const user = req.body;
   if (user.name && user.password) {
     const userFromDb = userModule.users.find(
       (u) => u.name === user.name && u.password === user.password
     );
     if (userFromDb) {
-      res.status(200).send({
-        user: {
-          name: userFromDb.name,
-          password: userFromDb.password,
-        },
-      });
+      res.status(200).send(userFromDb);
+    } else {
+      res.status(401).send({ message: "Invalid login" });
     }
+  } else {
+    res.status(401).send({ message: "Invalid login" });
   }
-  res.status(401).send({ message: "Invalid login" });
 });
 
 app.listen(8099, () => console.log("the api server listening 8099"));
