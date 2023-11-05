@@ -6,13 +6,14 @@ todo:
  - [x] init mock server to get data
  - [x] resolve issue with load topics * app
  - [x] create link to open by topic - articles
- - [ ] show Articles by singed UserId, show user in panel as logIn User
+ - [ ] show Articles by singed UserId, show user in panel as logIn User( as a filter like: show only my)
  - [ ] delay load items in topic-articles / to use load spinner
  - [ ] app link to use profile?
  - [ ] use ArticleDetails to show one opened article
  - [ ] articles entity load from signed-in user
  - [x] continue add the loadingAllTopics on load app.
- - [ ] consider to move API from express to .net EF/dapper and local db?
+ - [ ] consider to move API from express to .net/Elixir?(https://pamit.medium.com/building-a-restful-backend-with-elixir-phoenix-84fe390975c) EF/dapper/Phenix and local db/Postgres? 
+        
 
 bootstrap:
     https://bootstrap-vue.org/docs/components/list-group#list-group
