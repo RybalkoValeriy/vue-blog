@@ -12,6 +12,7 @@ import {
   FormInputPlugin,
   ToastPlugin,
   ListGroupPlugin,
+  FormCheckboxPlugin
 } from "bootstrap-vue";
 
 import "bootstrap/dist/css/bootstrap.css";
@@ -28,6 +29,7 @@ Vue.use(TablePlugin);
 Vue.use(FormInputPlugin);
 Vue.use(ToastPlugin);
 Vue.use(ListGroupPlugin);
+Vue.use(FormCheckboxPlugin);
 
 new Vue({
   router,
