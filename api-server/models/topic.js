@@ -1,7 +1,7 @@
 class Topic {
   constructor(id, name) {
-    this.Id = id;
-    this.Name = name;
+    this.id = id;
+    this.name = name;
   }
 }
 

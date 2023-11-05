@@ -1,7 +1,7 @@
 export interface Article {
-  Id: string;
-  TopicId: string;
-  AuthorId: string;
-  Name: string;
-  Body: string;
+  id: string;
+  topicId: string;
+  authorId: string;
+  name: string;
+  body: string;
 }

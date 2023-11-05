@@ -1,9 +1,9 @@
 import { Component, Vue } from 'vue-property-decorator';
 <template>
     <div>
-        <h2>{{ article?.Name }}</h2>
+        <h2>{{ article?.name }}</h2>
         <b-form-textarea
-        plaintext :value:="article?.Body"
+        plaintext :value:="article?.body"
         placeholder="Enter something..."
         >
 

@@ -12,9 +12,9 @@
     </BFormCheckbox>
     </div>
     
-    <BListGroup v-for="article in articles" :key="article.Id">
+    <BListGroup v-for="article in articles" :key="article.id">
       <BListGroupItem>
-        {{ article.Name }}
+        {{ article.name }}
       </BListGroupItem>
     </BListGroup>
   </div>
@@ -46,10 +46,8 @@ export default class Articles extends Vue {
   }
 
   public get myArticles() {
-    console.log("myArticles");
-    
     return AppModule.isSignedIn
-    ? this.articles.filter(x => x.AuthorId === AppModule.user?.id)
+    ? this.articles.filter(x => x.authorId === AppModule.user?.id)
     : this.articles;
   }
 

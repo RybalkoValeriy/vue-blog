@@ -9,12 +9,12 @@ const app = express();
 app.use(bodyParser.json());
 
 // ARTICLES
-app.get("/api/articles/", async (req, res) => {
+app.get("/api/v1/articles/", async (req, res) => {
   await utilities.mockDelay(200);
   res.status(200).send(articleModule.Article);
 });
 
-app.get("/api/articles/:topicId/", async (req, res) => {
+app.get("/api/v1/articles/:topicId/", async (req, res) => {
   await utilities.mockDelay(200);
   res
     .status(200)
@@ -23,7 +23,7 @@ app.get("/api/articles/:topicId/", async (req, res) => {
     );
 });
 
-app.get("/api/articles/:articleId", async (req, res) => {
+app.get("/api/v1/articles/:articleId", async (req, res) => {
   await utilities.mockDelay(200);
 
   res
@@ -33,7 +33,7 @@ app.get("/api/articles/:articleId", async (req, res) => {
     );
 });
 
-app.get("/app/articles/:userId", async (req, res) => {
+app.get("/app/v1/articles/:userId", async (req, res) => {
   await utilities.mockDelay(200);
   res
     .status(200)
@@ -43,13 +43,13 @@ app.get("/app/articles/:userId", async (req, res) => {
 });
 
 // TOPICS
-app.get("/api/topics", async (req, res) => {
+app.get("/api/v1/topics", async (req, res) => {
   await utilities.mockDelay(200);
   res.status(200).send(topicModule.topics);
 });
 
 // LOGIN
-app.post("/api/login", async (req, res) => {
+app.post("/api/v1/login", async (req, res) => {
   await utilities.mockDelay(400);
   const user = req.body;
   if (user.name && user.password) {
@@ -66,4 +66,4 @@ app.post("/api/login", async (req, res) => {
   }
 });
 
-app.listen(8099, () => console.log("the api server listening 8099"));
+app.listen(5021, () => console.log("the api server listening 5021"));

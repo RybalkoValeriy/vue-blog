@@ -3,8 +3,8 @@
     <h2>Topics:</h2>
     <div>
       <BListGroup v-for="(topic, index) in topics" :key="index">
-        <BListGroupItem :to="'/topic/' + topic.Id + '/articles'">
-          {{ topic.Name }}
+        <BListGroupItem :to="'/topic/' + topic.id + '/articles'">
+          {{ topic.name }}
         </BListGroupItem>
       </BListGroup>
     </div>

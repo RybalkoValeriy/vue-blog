@@ -80,6 +80,10 @@ class App extends VuexModule implements IAppState {
     const promise = new Promise<void>(async (resolve, reject) => {
       const topics = await Repository.GetAllTopics();
 
+      console.log(topics);
+      console.log(typeof(topics));
+      console.log(topics[0])
+
       this.SET_TOPICS(topics);
 
       resolve();

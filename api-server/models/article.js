@@ -1,10 +1,10 @@
 class Article {
   constructor(id, topicId, authorId, name, body) {
-    this.Id = id;
+    this.id = id;
     this.topicId = topicId;
-    this.AuthorId = authorId;
-    this.Name = name;
-    this.Body = body;
+    this.authorId = authorId;
+    this.name = name;
+    this.body = body;
   }
 }
 
