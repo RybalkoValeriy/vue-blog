@@ -8,6 +8,11 @@
         </BListGroupItem>
       </BListGroup>
     </div>
+    <div>
+      <b-button 
+        to = "/createTopic" 
+        variant="outline-primary">Create a new Topic</b-button>
+    </div>
   </div>
 </template>
 

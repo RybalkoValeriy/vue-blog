@@ -1,7 +1,9 @@
+import { Guid } from "guid-typescript";
+
 export interface Article {
-  id: string;
-  topicId: string;
-  authorId: string;
+  id: Guid;
+  topicId: Guid;
+  authorId: Guid;
   name: string;
   body: string;
 }

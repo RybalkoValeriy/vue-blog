@@ -40,7 +40,7 @@ export default class Articles extends Vue {
 
     if (segments.length >= 3) {
       this.topicId = segments[2];
-      this.articles = await AppModule.getArticlesForTenant(this.topicId);
+      this.articles = await AppModule.getArticlesForTopic(this.topicId);
       this.isLoading = false;
     }
   }

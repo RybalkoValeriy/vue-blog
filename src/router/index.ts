@@ -4,6 +4,7 @@ import Login from "@/components/Login.vue";
 import Articles from "@/components/Articles.vue";
 import Topics from "@/components/Topics.vue";
 import Profile from "@/components/Profile.vue";
+import CreateTopic from "@/components/CreateTopic.vue";
 
 Vue.use(VueRouter);
 
@@ -32,6 +33,11 @@ const routes: Array<RouteConfig> = [
     path: "/profile",
     name: "profile",
     component: Profile,
+  },
+  {
+    path: "/createTopic",
+    name: "createTopic",
+    component: CreateTopic
   },
 ];
 

@@ -1,4 +1,7 @@
+import { Guid } from "guid-typescript";
+
 export interface Topic {
-  id: string;
+  id: Guid;
   name: string;
+  authorId: Guid;
 }
